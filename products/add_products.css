@@ -1,0 +1,129 @@
+/* Reset default browser margins */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Full page layout */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f0f6ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  color: #374151;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #2563eb;
+}
+
+/* Heading inside form */
+form h1 {
+  text-align: center;
+  font-size: 28px;
+  color: #3b82f6;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Form container */
+form {
+  background-color: #eaf4ff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(100, 149, 237, 0.1);
+  display: grid;
+  gap: 15px;
+  max-width: 500px;
+  width: 100%;
+}
+
+/* Label styling */
+label {
+  font-weight: 500;
+  color: #374151;
+}
+
+/* Input fields, textarea, select */
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1.5px solid #cfe9ff;
+  font-size: 0.95rem;
+  background-color: #fff;
+  color: #374151;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #3b82f6;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(100, 149, 237, 0.1);
+}
+
+/* Textarea */
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* File input */
+input[type="file"] {
+  padding: 8px;
+  border: 1.5px solid #cfe9ff;
+  border-radius: 8px;
+  background-color: #f9fbff;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+input[type="file"]:hover {
+  background-color: #f0f6ff;
+}
+
+/* Button */
+button {
+  background-color: #3b82f6;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(100, 149, 237, 0.3);
+}
+
+/* Mobile responsive */
+@media (max-width: 480px) {
+  form {
+    width: 90%;
+  }
+}
+
+.alert {
+    background-color: #fee2e2;
+    color: #991b1b;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(153, 27, 27, 0.1);
+}
+

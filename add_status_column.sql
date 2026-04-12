@@ -1,0 +1,1 @@
+ALTER TABLE users_db ADD COLUMN status VARCHAR(20) DEFAULT 'active';

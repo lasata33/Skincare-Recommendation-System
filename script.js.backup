@@ -1,0 +1,128 @@
+document.addEventListener('DOMContentLoaded', function() {
+    // Register modal logic
+    const navLoginBtn = document.querySelector('#nav-login-btn');
+    const registerModal = document.getElementById('register-modal');
+    const closeRegisterModal = document.getElementById('close-modal');
+    const quizForm = document.querySelector('#register-modal #quiz-form');
+    const registrationSection = document.getElementById('registration-section');
+    const quizSection = document.getElementById('quiz-section');
+
+    // Show register modal when clicking login button
+    if (navLoginBtn && registerModal) {
+        navLoginBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            registerModal.style.display = 'flex';
+        });
+    }
+
+  if (navRegisterBtn && registerModal && closeRegisterModal) {
+    navRegisterBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      registerModal.style.display = 'flex';
+    });
+    closeRegisterModal.addEventListener('click', function() {
+      registerModal.style.display = 'none';
+    });
+  }
+
+  // Login modal logic
+  const loginBtn = document.querySelector('a[href="#login"]');
+  const loginModal = document.getElementById('login-modal');
+  const closeLoginModal = document.getElementById('close-login-modal');
+
+  if (loginBtn && loginModal && closeLoginModal) {
+    loginBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      loginModal.style.display = 'flex';
+    });
+    closeLoginModal.addEventListener('click', function() {
+      loginModal.style.display = 'none';
+    });
+  }
+
+  // Switch between modals
+  const showLogin = document.getElementById('show-login');
+  const showRegister = document.getElementById('show-register');
+
+  if (showLogin && registerModal && loginModal) {
+    showLogin.addEventListener('click', function(e) {
+      e.preventDefault();
+      registerModal.style.display = 'none';
+      loginModal.style.display = 'flex';
+    });
+  }
+
+  if (showRegister && registerModal && loginModal) {
+    showRegister.addEventListener('click', function(e) {
+      e.preventDefault();
+      loginModal.style.display = 'none';
+      registerModal.style.display = 'flex';
+    });
+  }
+
+  // Skincare form submit logic
+  const form = document.getElementById('skincare-form');
+  const resultDiv = document.getElementById('result');
+
+  if (form && resultDiv) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const skinType = document.getElementById('skin-type').value;
+      const concern = document.getElementById('concern').value;
+      const age = document.getElementById('age').value;
+      const gender = document.getElementById('gender').value;
+
+      let recommendations = getRecommendations(skinType, concern, age, gender);
+      resultDiv.innerHTML = recommendations;
+    });
+  }
+
+  function getRecommendations(skinType, concern, age, gender) {
+    let rec = [];
+    if (skinType === 'oily') {
+      rec.push('Use a gentle foaming cleanser.');
+      rec.push('Look for oil-free moisturizers.');
+    } else if (skinType === 'dry') {
+      rec.push('Use a hydrating cream cleanser.');
+      rec.push('Apply a rich moisturizer with ceramides.');
+    } else if (skinType === 'combination') {
+      rec.push('Use a gentle gel cleanser.');
+      rec.push('Moisturize dry areas and use oil-control on T-zone.');
+    } else if (skinType === 'sensitive') {
+      rec.push('Use fragrance-free, hypoallergenic products.');
+      rec.push('Avoid harsh exfoliants.');
+    } else {
+      rec.push('Use a gentle daily cleanser and moisturizer.');
+    }
+
+    if (concern === 'acne') {
+      rec.push('Look for products with salicylic acid or benzoyl peroxide.');
+      rec.push('Avoid heavy creams.');
+    } else if (concern === 'aging') {
+      rec.push('Use products with retinol or peptides.');
+      rec.push('Apply sunscreen daily.');
+    } else if (concern === 'hyperpigmentation') {
+      rec.push('Try products with vitamin C or niacinamide.');
+      rec.push('Use sunscreen to prevent further dark spots.');
+    } else if (concern === 'redness') {
+      rec.push('Look for calming ingredients like centella asiatica or allantoin.');
+      rec.push('Avoid alcohol-based products.');
+    }
+
+    if (parseInt(age) < 20) {
+      rec.push('Focus on gentle cleansing and sun protection.');
+    } else if (parseInt(age) >= 20 && parseInt(age) < 35) {
+      rec.push('Add antioxidants and light moisturizers.');
+    } else if (parseInt(age) >= 35) {
+      rec.push('Consider anti-aging serums and richer moisturizers.');
+    }
+
+    if (gender === 'male') {
+      rec.push('Shave with a moisturizing cream and avoid alcohol-based aftershaves.');
+    } else if (gender === 'female') {
+      rec.push('Remove makeup thoroughly before bed.');
+    }
+
+    return '<ul><li>' + rec.join('</li><li>') + '</li></ul>';
+  }
+});
